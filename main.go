@@ -33,7 +33,7 @@ func metricsWrapper(h http.Handler) http.Handler {
 func main() {
 	constValueOne.Inc()
 
-	http.Handle("/metrics", promhttp.Handler())
+	http.Handle("/metrics", metricsWrapper(promhttp.Handler()))
 	http.HandleFunc("/healthz/readieness", healthz)
 	http.HandleFunc("/healthz/liveness", healthz)
 

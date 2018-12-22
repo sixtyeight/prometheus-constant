@@ -37,5 +37,6 @@ func main() {
 	http.HandleFunc("/healthz/readieness", healthz)
 	http.HandleFunc("/healthz/liveness", healthz)
 
+	log.Println("Waiting for connections...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
